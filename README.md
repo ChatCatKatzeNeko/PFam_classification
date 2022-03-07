@@ -71,7 +71,7 @@ I proposed two ways to tackle the problem:
 
 The realisation of the first method is in the notebook “Feature_engineering_then_RF” and “Feature_engineering_then_RF_reducedVersion”. Lack of resources (time, teamwork…), I did not make any effort in hyper parameters tuning, so I used the default ones. The “reduced version” has less analysis part and I restricted the number of classes to 500, to compare performance of the model.
 
-For the solution more “deep learning” flavour, I used the embedding model described in Evaluating Protein Transfer Learning with TAPE by Rao et al [2]. It is a BERT-based model trained on protein langue model tasks, the advantage of the model is that it inherits the bidirectional context aspect from BERT and the attention mechanism from the Transformer. The model embeds an amino acid into a 768 dimensional vector.
+For the solution more “deep learning” flavour, I used the embedding model described in Evaluating Protein Transfer Learning with TAPE by Rao et al. It is a BERT-based model trained on protein langue model tasks, the advantage of the model is that it inherits the bidirectional context aspect from BERT and the attention mechanism from the Transformer. The model embeds an amino acid into a 768 dimensional vector.
 
 Detailed codes are in the notebooks “BERT_embedding_then_NN” and “BERT_embedding_then_NN_KO”. In the “KO” notebook I trained the BERT-embedding + LSTM + NN model, but the gain was not significant so I terminated the process.
 
@@ -91,9 +91,9 @@ A brief recap of the results:
 The random forest model trained on classical features failed when the number of classes goes up, it might be due to memory leakage because trees branches are developed using floats, and the feature space dimension is high. On the other hand the binary encoding results in rather sparse feature matrix and entries are all unsigned 64-bit integers, taking up less memory when boosting trees.
 
 In my settings, the simpler random forest models clearly outperformed the neural network models. Explanations for the failure could be:
-Hyper-parameters not properly defined (hidden layers / state dimension, number of layers…), hence negatively impact the results;
-Insufficient training data compared to the number of parameters to be adjusted;
-Embedding model not suited for the problem, fine tuning of the parameters needed.
+- Hyper-parameters not properly defined (hidden layers / state dimension, number of layers…), hence negatively impact the results;
+- Insufficient training data compared to the number of parameters to be adjusted;
+- Embedding model not suited for the problem, fine tuning of the parameters needed.
 
 A few more words on the 100% accuracy obtained by the RF models on a smaller number of classes: given the high enough dimensional feature space created by the binary encoding (or the proportion of each amino acid), the data points can be distributed sparsely yet staying in close clusters if the points belong to the same family, leaving more than enough room for the RF models to build separation thresholds between families.
 
