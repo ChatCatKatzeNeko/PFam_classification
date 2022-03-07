@@ -49,7 +49,7 @@ Now a protein sequence of any length can be represented by a 27-dimensional vect
 Let’s now change our mindset and look at the aligned sequence in a more visual way. What if one only interests in the gaps in an aligned sequence? 
 To move on in this direction, I converted the aligned sequences into binary sequences of the same length with 1 if there is some amino acid at the position and 0 if there is a gap. I then stacked these binary vectors from the same protein family to get a binary matrix. Once visualised, one can see clear patterns characterising each family.
 
-Fig.2 is an example of such binary matrices.
+Below is an example of such binary matrices.
 
 ![Binarised protein sequences](./binarised.png)
 
